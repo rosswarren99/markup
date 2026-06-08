@@ -1,0 +1,25 @@
+.markup-notes-highlight {
+  background: #fff08a;
+  color: inherit;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(194, 146, 0, 0.18);
+}
+
+#markup-notes-capture {
+  position: absolute;
+  z-index: 2147483647;
+  appearance: none;
+  border: 1px solid #b6aa96;
+  background: #241f18;
+  color: #fffaf0;
+  border-radius: 6px;
+  min-height: 34px;
+  padding: 0 11px;
+  font: 700 12px/1 Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(32, 26, 18, 0.25);
+}
+
+#markup-notes-capture:hover {
+  background: #3a3024;
+}

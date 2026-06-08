@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Markup Notes",
+  "version": "0.1.0",
+  "description": "Take markdown notes beside any webpage and capture selected passages as highlights.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Toggle Markup Notes"
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"],
+      "css": ["src/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "toggle-notes": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+M",
+        "mac": "Command+Shift+M"
+      },
+      "description": "Toggle Markup Notes"
+    }
+  }
+}
