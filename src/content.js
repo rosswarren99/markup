@@ -112,6 +112,7 @@
     rootHost = document.createElement("div");
     rootHost.id = PANEL_ID;
     rootHost.hidden = true;
+    rootHost.style.display = "none";
     document.documentElement.appendChild(rootHost);
     shadow = rootHost.attachShadow({ mode: "open" });
 
@@ -121,6 +122,10 @@
         all: initial;
         color-scheme: light;
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      :host([hidden]) {
+        display: none !important;
       }
 
       .panel {
@@ -225,7 +230,7 @@
     });
 
     const exportButton = createButton("Export .md", "Download this note as markdown", downloadMarkdown);
-    const closeButton = createButton("Close", "Hide the notes panel", togglePanel);
+    const closeButton = createButton("Close", "Hide the notes panel", hidePanel);
 
     header.append(title, addSelection, exportButton, closeButton);
 
@@ -262,12 +267,23 @@
 
   const togglePanel = async () => {
     await createPanel();
-    rootHost.hidden = !rootHost.hidden;
+    setPanelVisible(rootHost.hidden || rootHost.style.display === "none");
   };
 
   const showPanel = async () => {
     await createPanel();
-    rootHost.hidden = false;
+    setPanelVisible(true);
+  };
+
+  const hidePanel = () => {
+    if (rootHost) {
+      setPanelVisible(false);
+    }
+  };
+
+  const setPanelVisible = (visible) => {
+    rootHost.hidden = !visible;
+    rootHost.style.display = visible ? "block" : "none";
   };
 
   const hideCaptureButton = () => {
