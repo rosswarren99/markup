@@ -22,3 +22,5 @@ Markup Notes is a Chrome extension MVP for reading a webpage with a markdown not
 ## Notes
 
 This first version saves notes locally in Chrome extension storage using the page origin and path as the key. Highlight restoration after a page reload is intentionally left for a later version because durable web annotation needs more careful anchoring than a simple selected-text match.
+
+Need to improve this to handle PDFs
